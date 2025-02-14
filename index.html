@@ -114,7 +114,8 @@
 </head>
 <body>
     <audio id="musicaFondo" loop>
-        <source src="assets/music/amor.mp3" type="audio/mp3">
+        <source src="music.mp3" type="audio/mp3">
+        Tu navegador no soporta el elemento de audio.
     </audio>
 
     <div class="valentines-day">
@@ -159,26 +160,31 @@
     <script src="assets/js/main.js"></script>
     <script>
         $(document).ready(function() {
+            const audio = document.getElementById('musicaFondo');
+            
             $('.envelope').click(function() {
                 // Create more hearts for longer duration
-                for (let i = 0; i < 80; i++) { // Increased to 80 hearts
+                for (let i = 0; i < 80; i++) {
                     let heart = $('<div class="heart"></div>');
                     heart.css({
                         left: Math.random() * 100 + '%',
-                        animationDelay: Math.random() * 8 + 's', // Increased delay
-                        animationDuration: (Math.random() * 4 + 8) + 's' // Increased duration
+                        animationDelay: Math.random() * 8 + 's',
+                        animationDuration: (Math.random() * 4 + 8) + 's'
                     });
                     $('#heartAnimation').append(heart);
                 }
-                // Show hearts for 15 seconds
+                // Show hearts for 15 seconds and play music
                 setTimeout(function() {
                     $('#heartAnimation').empty();
                     $('#card').fadeIn();
-                }, 15000); // Set to 15 seconds
+                    audio.play(); // Reproducir música cuando aparece el mensaje
+                }, 15000);
             });
 
             $('#card').click(function() {
                 $(this).fadeOut();
+                audio.pause(); // Detener música cuando se cierra el mensaje
+                audio.currentTime = 0; // Reiniciar la música al principio
             });
         });
     </script>
