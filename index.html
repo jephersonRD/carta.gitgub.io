@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Una Carta Especial Para Ti ❤️</title>
+    <meta name="description" content="Una carta especial llena de amor para ti">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Prevenir caché -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        /* Add responsive styles */
+        .mensaje-interior {
+            max-width: 85%;
+            margin: 20px auto;
+            padding: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            background: #fff;
+            border-radius: 15px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .mensaje-interior h1 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .contenido-carta {
+            padding: 0 10px;
+        }
+
+        .contenido-carta p {
+            margin: 8px 0;
+        }
+
+        .firma {
+            margin-top: 15px;
+            text-align: right;
+            font-style: italic;
+        }
+
+        @media (min-width: 768px) {
+            .mensaje-interior {
+                max-width: 450px; /* Reduced from 600px */
+                font-size: 16px;
+            }
+        }
+
+        .corazones-flotantes {
+            font-size: 0.9em;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .instrucciones-cerrar {
+            font-size: 0.8em;
+            text-align: center;
+            margin-top: 15px;
+            color: #666;
+        }
+
+        /* Heart animation styles */
+        .heart-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff4b4b;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            animation: floatHeart 80s ease-in-out infinite; /* Increased to 80s */
+            opacity: 0;
+        }
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff4b4b;
+            border-radius: 50%;
+        }
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+        .heart::after {
+            left: 10px;
+            top: 0;
+        }
+        @keyframes floatHeart {
+            0% {
+                transform: translate(-50%, 100vh) rotate(-45deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -100vh) rotate(-45deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <audio id="musicaFondo" loop>
+        <source src="assets/music/amor.mp3" type="audio/mp3">
+    </audio>
+
+    <div class="valentines-day">
+        <div class="envelope">
+            <div class="envelope-lines"></div>
+            <div class="stamp"></div>
+            <div class="heart"></div>
+            <div class="front"></div>
+            <div class="text">
+                Toca para abrir ❤️
+            </div>
+        </div>
+        <div class="envelope-shadow"></div>
+    </div>
+
+    <div class="heart-animation" id="heartAnimation"></div>
+    <div id="card" style="display: none;">
+        <div class="mensaje-interior">
+            <div class="corazones-flotantes">
+                ❤️ 💕 💝 💖 💗 💓
+            </div>
+            <h1>Para Alguien Especial</h1>
+            <div class="contenido-carta">
+                <p>Querida Darlenis,</p>
+                <p>Aunque nos conocemos hace poco tiempo, quiero aprovechar este Día de la Amistad para decirte lo contento que estoy de haberte conocido. Tu alegría y forma de ser han traído una nueva luz a mis días.</p>
+                <p>Espero que podamos seguir construyendo esta bonita amistad y compartiendo más momentos juntas. Que tengas un día muy especial.</p>
+                <div class="firma">
+                    <p>Con cariño,</p>
+                    <p>jepherson ❤️</p>
+                </div>
+            </div>
+            <div class="corazones-flotantes">
+                ❤️ 💕 💝 💖 💗 💓
+            </div>
+            <div class="instrucciones-cerrar">
+                (Toca en cualquier lugar para cerrar)
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.envelope').click(function() {
+                // Create more hearts for longer duration
+                for (let i = 0; i < 80; i++) { // Increased to 80 hearts
+                    let heart = $('<div class="heart"></div>');
+                    heart.css({
+                        left: Math.random() * 100 + '%',
+                        animationDelay: Math.random() * 8 + 's', // Increased delay
+                        animationDuration: (Math.random() * 4 + 8) + 's' // Increased duration
+                    });
+                    $('#heartAnimation').append(heart);
+                }
+                // Show hearts for 15 seconds
+                setTimeout(function() {
+                    $('#heartAnimation').empty();
+                    $('#card').fadeIn();
+                }, 15000); // Set to 15 seconds
+            });
+
+            $('#card').click(function() {
+                $(this).fadeOut();
+            });
+        });
+    </script>
+</body>
+</html>

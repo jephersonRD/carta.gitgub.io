@@ -1,0 +1,386 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, #ffeb3b, #e91e63);
+    font-family: Arial, sans-serif;
+    perspective: 1000px;
+}
+
+.valentines-day {
+    position: relative;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+    animation: floatEnvelope 3s ease-in-out infinite;
+    width: 350px;
+    height: 220px;
+    overflow: visible;
+}
+
+.envelope {
+    position: relative;
+    width: 350px;
+    height: 220px;
+    background: linear-gradient(135deg, #f5edd1 0%, #e6d5b8 100%);
+    box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.2),
+        inset 0 2px 0 rgba(255, 255, 255, 0.6);
+    border-radius: 3px;
+    transform-style: preserve-3d;
+    overflow: hidden;
+}
+
+.envelope:before {
+    content: "";
+    position: absolute;
+    width: 246px;
+    height: 246px;
+    background: linear-gradient(135deg, #e6d5b8 0%, #d4c4a7 100%);
+    transform: rotate(45deg);
+    top: -123px;
+    left: 52px;
+    border-radius: 30px 0 0 0;
+    box-shadow: 
+        -5px 5px 20px rgba(0, 0, 0, 0.05),
+        inset 2px -2px 0 rgba(255, 255, 255, 0.3);
+    transition: transform 0.5s ease;
+    transform-origin: bottom;
+    z-index: 2;
+}
+
+.front {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 175px solid transparent;
+    border-right: 175px solid transparent;
+    border-bottom: 120px solid #e9dc9d;
+    top: 0;
+    left: 0;
+    transform-origin: top;
+    transition: transform 0.6s ease;
+    z-index: 3;
+}
+
+.front.open {
+    transform: rotateX(180deg);
+}
+
+.envelope:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(transparent 50%, rgba(0,0,0,0.1));
+    z-index: 1;
+}
+
+.envelope-shadow {
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    bottom: -25px;
+    left: 0;
+    background: rgba(0,0,0,0.2);
+    border-radius: 50%;
+    filter: blur(10px);
+}
+
+.stamp {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 60px;
+    background: linear-gradient(45deg, #ff6b6b, #e91e63);
+    border-radius: 3px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 4;
+    border: 2px solid rgba(255,255,255,0.6);
+}
+
+.stamp:after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 1px dashed rgba(255,255,255,0.8);
+}
+
+.envelope-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(135deg, transparent 50%, rgba(0,0,0,0.05) 50%),
+        linear-gradient(-135deg, transparent 50%, rgba(0,0,0,0.05) 50%);
+    z-index: 1;
+}
+
+.text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 24px;
+    color: #e91e63;
+    font-weight: bold;
+    z-index: 6;
+    width: 100%;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    pointer-events: none;
+}
+
+.heart {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: #e91e63;
+    transform: rotate(45deg);
+    top: 50%;
+    left: 50%;
+    margin: -20px;
+    z-index: 4;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.heart:before,
+.heart:after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: #e91e63;
+    border-radius: 50%;
+}
+
+.heart:before {
+    left: -20px;
+}
+
+.heart:after {
+    top: -20px;
+}
+
+@keyframes heartbeat {
+    0% { transform: rotate(45deg) scale(0.8); }
+    5% { transform: rotate(45deg) scale(0.9); }
+    10% { transform: rotate(45deg) scale(0.8); }
+    15% { transform: rotate(45deg) scale(1); }
+    50% { transform: rotate(45deg) scale(0.8); }
+    100% { transform: rotate(45deg) scale(0.8); }
+}
+
+.instrucciones {
+    position: fixed;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 1.2em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+#card {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 2em;
+    border-radius: 15px;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.2);
+    max-width: 90%;
+    width: 500px;
+    text-align: center;
+    z-index: 1000;
+    opacity: 0;
+    transform-origin: center;
+    border: 1px solid #ffcdd2;
+    background-image: 
+        linear-gradient(#fff9f9 1px, transparent 1px),
+        linear-gradient(90deg, #fff9f9 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+#card.visible {
+    display: block !important;
+    animation: apareceCard 0.5s forwards;
+}
+
+.mensaje-interior {
+    padding: 30px;
+    position: relative;
+    background: #fff;
+    border: 2px solid #e91e63;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(233, 30, 99, 0.1);
+}
+
+.mensaje-interior:before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 1px solid #ff94c2;
+    border-radius: 12px;
+    pointer-events: none;
+}
+
+.corazones-flotantes {
+    font-size: 28px;
+    margin: 20px 0;
+    animation: floatHearts 3s ease-in-out infinite;
+    background: linear-gradient(45deg, #ff6b6b, #e91e63);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.contenido-carta {
+    font-size: 1.2em;
+    line-height: 1.8;
+    color: #333;
+    margin: 30px 0;
+    text-align: left;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.firma {
+    margin-top: 40px;
+    font-style: italic;
+    color: #e91e63;
+    border-top: 2px dotted #ffcdd2;
+    padding-top: 20px;
+}
+
+.instrucciones-cerrar {
+    font-size: 0.8em;
+    color: #666;
+    margin-top: 20px;
+}
+
+.imagen-mensaje {
+    width: 100%;
+    max-width: 300px;
+    margin: 20px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.imagen-mensaje img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.imagen-mensaje img:hover {
+    transform: scale(1.05);
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes apareceCard {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes floatHearts {
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-15px) rotate(3deg); }
+}
+
+/* Ajustes de animación del sobre */
+@keyframes floatEnvelope {
+    0%, 100% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+/* Mejoras responsive */
+@media (max-width: 600px) {
+    #card {
+        width: 85%;
+        padding: 1.5em;
+    }
+    
+    .contenido-carta {
+        font-size: 1em;
+        line-height: 1.6;
+    }
+    
+    .mensaje-interior {
+        padding: 15px;
+    }
+
+    .imagen-mensaje {
+        max-width: 250px;
+    }
+}
+
+.oso-flotante {
+    position: absolute;
+    right: -180px; /* Ajustado para mejor visibilidad */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 150px; /* Aumentado el tamaño */
+    animation: floatOso 3s ease-in-out infinite;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.oso-flotante img,
+.ositos-mensaje {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.ositos-mensaje {
+    position: absolute;
+    width: 120px; /* Aumentado el tamaño */
+    height: auto;
+    z-index: 10; /* Aseguramos que estén por encima */
+}
+
+.osito-izquierdo {
+    left: -140px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.osito-derecho {
+    right: -140px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@keyframes floatOso {
+    0%, 100% { transform: translateY(-50%); }
+    50% { transform: translateY(-60%); }
+}
