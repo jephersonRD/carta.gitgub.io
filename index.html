@@ -12,65 +12,101 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <style>
-        /* Add responsive styles */
+        /* Responsive styles mejorados */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: #f8f8f8;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
         .mensaje-interior {
-            max-width: 85%;
+            max-width: 95vw;
             margin: 20px auto;
-            padding: 15px;
+            padding: 5vw 4vw;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             background: #fff;
             border-radius: 15px;
-            font-size: 14px;
+            font-size: 4vw;
             line-height: 1.5;
+            box-sizing: border-box;
         }
-
         .mensaje-interior h1 {
-            font-size: 1.5em;
+            font-size: 6vw;
             margin-bottom: 15px;
             text-align: center;
         }
-
         .contenido-carta {
-            padding: 0 10px;
+            padding: 0 2vw;
         }
-
         .contenido-carta p {
             margin: 8px 0;
+            font-size: 4vw;
         }
-
         .firma {
             margin-top: 15px;
             text-align: right;
             font-style: italic;
+            font-size: 4vw;
         }
-
-        @media (min-width: 768px) {
-            .mensaje-interior {
-                max-width: 450px; /* Reduced from 600px */
-                font-size: 16px;
-            }
-        }
-
         .corazones-flotantes {
-            font-size: 0.9em;
+            font-size: 5vw;
             text-align: center;
             margin: 10px 0;
         }
-
         .instrucciones-cerrar {
-            font-size: 0.8em;
+            font-size: 3vw;
             text-align: center;
             margin-top: 15px;
             color: #666;
         }
-
-        /* Heart animation styles */
+        /* Envelope y animaciones responsivas */
+        .valentines-day {
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 5vh;
+        }
+        .envelope {
+            width: 60vw;
+            max-width: 350px;
+            min-width: 180px;
+            height: 40vw;
+            max-height: 220px;
+            min-height: 120px;
+            margin: 0 auto;
+            position: relative;
+            cursor: pointer;
+        }
+        .envelope-shadow {
+            width: 60vw;
+            max-width: 350px;
+            min-width: 180px;
+            height: 10px;
+            background: rgba(0,0,0,0.08);
+            border-radius: 50%;
+            margin: 0 auto 20px auto;
+        }
+        .text {
+            font-size: 4vw;
+            text-align: center;
+            margin-top: 2vw;
+        }
+        /* Animación de corazones */
         .heart-animation {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             pointer-events: none;
             z-index: 1000;
         }
@@ -80,7 +116,7 @@
             height: 20px;
             background: #ff4b4b;
             transform: translate(-50%, -50%) rotate(-45deg);
-            animation: floatHeart 80s ease-in-out infinite; /* Increased to 80s */
+            animation: floatHeart 80s ease-in-out infinite;
             opacity: 0;
         }
         .heart::before,
@@ -110,6 +146,52 @@
                 opacity: 0;
             }
         }
+        /* Ajustes para pantallas medianas y grandes */
+        @media (min-width: 600px) {
+            .mensaje-interior {
+                max-width: 450px;
+                font-size: 18px;
+                padding: 30px 25px;
+            }
+            .mensaje-interior h1 {
+                font-size: 2em;
+            }
+            .contenido-carta p, .firma {
+                font-size: 1em;
+            }
+            .corazones-flotantes {
+                font-size: 1.2em;
+            }
+            .instrucciones-cerrar {
+                font-size: 0.9em;
+            }
+            .envelope, .envelope-shadow {
+                width: 320px;
+                min-width: 180px;
+            }
+            .envelope {
+                height: 200px;
+            }
+        }
+        @media (min-width: 900px) {
+            .mensaje-interior {
+                max-width: 420px;
+                font-size: 18px;
+                padding: 30px 25px;
+            }
+            .mensaje-interior h1 {
+                font-size: 2em;
+            }
+            .contenido-carta p, .firma {
+                font-size: 1em;
+            }
+            .corazones-flotantes {
+                font-size: 1.2em;
+            }
+            .instrucciones-cerrar {
+                font-size: 0.9em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -135,20 +217,24 @@
     <div id="card" style="display: none;">
         <div class="mensaje-interior">
             <div class="corazones-flotantes">
-                ❤️ 💕 💝 💖 💗 💓
+                🩵 💫 🧸 🌷 💌 🌻 🦋
             </div>
-            <h1>Para Alguien Especial</h1>
+            <h1>Para una amiga increíble</h1>
             <div class="contenido-carta">
-                <p>Querida Darlenis,</p>
-                <p>Aunque nos conocemos hace poco tiempo, quiero aprovechar este Día de la Amistad para decirte lo contento que estoy de haberte conocido. Tu alegría y forma de ser han traído una nueva luz a mis días.</p>
-                <p>Espero que podamos seguir construyendo esta bonita amistad y compartiendo más momentos juntas. Que tengas un día muy especial.</p>
+                <p>Amiga, tú no necesitas mendigar amor. Tú eres de las que dan amor de verdad, del que ya casi no se encuentra. Si alguien no supo valorar eso, el problema fue de él, no tuyo. Tú sigue brillando, que lo tuyo es demasiado para gente que no sabe lo que quiere.</p>
+                <p>Si él no supo cuidarte, no era para ti. Así de simple. Tú mereces a alguien que no tenga que perderte para darse cuenta de lo increíble que eres. Y mientras llega ese alguien, aquí estoy yo para recordártelo las veces que haga falta.</p>
+                <p>Wow, tú eres puro corazón. Se nota que lo diste todo, y eso no es malo. No te arrepientas de haber amado así, porque el amor bonito siempre deja huella, aunque a veces duela. Ya verás que la vida te devolverá algo mucho mejor.</p>
+                <p>A veces el que más da, más duele. Pero también es el que más aprende y más crece. Tú ya estás sanando, y eso es hermoso. Estoy orgulloso/a de ti, aunque no te lo diga tanto. ¡Sigue así! El mundo necesita más corazones como el tuyo.</p>
+                <p>Eres una mujer que se ama de verdad, aunque a veces se te olvide. Y no estás sola, eh. Aquí tienes a alguien que sí ve lo que vales y que va a recordártelo hasta que tú misma te lo creas otra vez.</p>
+                <p>Él tuvo su momento, pero tú tienes todo un futuro. No te detengas por quien no supo quedarse. Lo mejor que puedes hacer ahora es enfocarte en ti, y créeme, vas a florecer otra vez... pero esta vez más bonita que nunca.</p>
+                <p>Tú fuiste su mundo, sí... pero ahora te toca ser tu propio universo. Y eso empieza por sanar, reír, vivir y no mirar atrás más de la cuenta. Lo que viene será mucho mejor, y tú vas a estar lista para recibirlo como la reina que eres.</p>
                 <div class="firma">
                     <p>Con cariño,</p>
-                    <p>jepherson ❤️</p>
+                    <p>jepherson 🩵</p>
                 </div>
             </div>
             <div class="corazones-flotantes">
-                ❤️ 💕 💝 💖 💗 💓
+                🩵 💫 🧸 🌷 💌 🌻 🦋
             </div>
             <div class="instrucciones-cerrar">
                 (Toca en cualquier lugar para cerrar)
