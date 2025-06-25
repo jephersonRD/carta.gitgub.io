@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Una Carta Especial Para Ti ❤️</title>
+    <meta name="description" content="Una carta especial llena de amor para ti">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Prevenir caché -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        /* Responsive styles mejorados */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: #f8f8f8;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .mensaje-interior {
+            max-width: 95vw;
+            margin: 20px auto;
+            padding: 5vw 4vw;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            background: #fff;
+            border-radius: 15px;
+            font-size: 4vw;
+            line-height: 1.5;
+            box-sizing: border-box;
+        }
+        .mensaje-interior h1 {
+            font-size: 6vw;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .contenido-carta {
+            padding: 0 2vw;
+        }
+        .contenido-carta p {
+            margin: 8px 0;
+            font-size: 4vw;
+        }
+        .firma {
+            margin-top: 15px;
+            text-align: right;
+            font-style: italic;
+            font-size: 4vw;
+        }
+        .corazones-flotantes {
+            font-size: 5vw;
+            text-align: center;
+            margin: 10px 0;
+        }
+        .instrucciones-cerrar {
+            font-size: 3vw;
+            text-align: center;
+            margin-top: 15px;
+            color: #666;
+        }
+        /* Envelope y animaciones responsivas */
+        .valentines-day {
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 5vh;
+        }
+        .envelope {
+            width: 60vw;
+            max-width: 350px;
+            min-width: 180px;
+            height: 40vw;
+            max-height: 220px;
+            min-height: 120px;
+            margin: 0 auto;
+            position: relative;
+            cursor: pointer;
+        }
+        .envelope-shadow {
+            width: 60vw;
+            max-width: 350px;
+            min-width: 180px;
+            height: 10px;
+            background: rgba(0,0,0,0.08);
+            border-radius: 50%;
+            margin: 0 auto 20px auto;
+        }
+        .text {
+            font-size: 4vw;
+            text-align: center;
+            margin-top: 2vw;
+        }
+        /* Animación de corazones */
+        .heart-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff4b4b;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            animation: floatHeart 80s ease-in-out infinite;
+            opacity: 0;
+        }
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff4b4b;
+            border-radius: 50%;
+        }
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+        .heart::after {
+            left: 10px;
+            top: 0;
+        }
+        @keyframes floatHeart {
+            0% {
+                transform: translate(-50%, 100vh) rotate(-45deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -100vh) rotate(-45deg);
+                opacity: 0;
+            }
+        }
+        /* Ajustes para pantallas medianas y grandes */
+        @media (min-width: 600px) {
+            .mensaje-interior {
+                max-width: 450px;
+                font-size: 18px;
+                padding: 30px 25px;
+            }
+            .mensaje-interior h1 {
+                font-size: 2em;
+            }
+            .contenido-carta p, .firma {
+                font-size: 1em;
+            }
+            .corazones-flotantes {
+                font-size: 1.2em;
+            }
+            .instrucciones-cerrar {
+                font-size: 0.9em;
+            }
+            .envelope, .envelope-shadow {
+                width: 320px;
+                min-width: 180px;
+            }
+            .envelope {
+                height: 200px;
+            }
+        }
+        @media (min-width: 900px) {
+            .mensaje-interior {
+                max-width: 420px;
+                font-size: 18px;
+                padding: 30px 25px;
+            }
+            .mensaje-interior h1 {
+                font-size: 2em;
+            }
+            .contenido-carta p, .firma {
+                font-size: 1em;
+            }
+            .corazones-flotantes {
+                font-size: 1.2em;
+            }
+            .instrucciones-cerrar {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <audio id="musicaFondo" loop>
+        <source src="music.mp3" type="audio/mp3">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <div class="valentines-day">
+        <div class="envelope">
+            <div class="envelope-lines"></div>
+            <div class="stamp"></div>
+            <div class="heart"></div>
+            <div class="front"></div>
+            <div class="text">
+                Toca para abrir ❤️
+            </div>
+        </div>
+        <div class="envelope-shadow"></div>
+    </div>
+
+    <div class="heart-animation" id="heartAnimation"></div>
+    <div id="card" style="display: none;">
+        <div class="mensaje-interior" style="max-height: 65vh; overflow-y: auto;">
+            <div class="corazones-flotantes">
+                🩵 💫 🧸 🌷 💌 🌻 🦋
+            </div>
+            <h1>Para una amiga increíble</h1>
+            <div class="contenido-carta">
+                <p>Amiga, sé que duele dejar atrás a alguien que quisiste, pero recuerda que tu valor no depende de quien no supo apreciarte. Eres fuerte, valiente y mereces un amor que te haga sentir especial cada día.</p>
+                <p>No te detengas por el pasado. Usa cada lágrima como semilla para florecer aún más hermosa. El amor propio es el primer paso para sanar y volver a sonreír con el corazón.</p>
+                <p>Confía en ti, en tu luz y en todo lo bueno que la vida tiene preparado para ti. Lo mejor está por venir, y yo estaré aquí para recordártelo siempre. ¡Ánimo, reina!</p>
+                <div class="firma">
+                    <p>Con cariño,</p>
+                    <p>jepherson 🩵</p>
+                </div>
+            </div>
+            <div class="corazones-flotantes">
+                🩵 💫 🧸 🌷 💌 🌻 🦋
+            </div>
+            <div class="instrucciones-cerrar">
+                (Desliza para leer y toca para cerrar)
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        $(document).ready(function() {
+            const audio = document.getElementById('musicaFondo');
+            
+            $('.envelope').click(function() {
+                // Create more hearts for longer duration
+                for (let i = 0; i < 80; i++) {
+                    let heart = $('<div class="heart"></div>');
+                    heart.css({
+                        left: Math.random() * 100 + '%',
+                        animationDelay: Math.random() * 8 + 's',
+                        animationDuration: (Math.random() * 4 + 8) + 's'
+                    });
+                    $('#heartAnimation').append(heart);
+                }
+                // Show hearts for 15 seconds and play music
+                setTimeout(function() {
+                    $('#heartAnimation').empty();
+                    $('#card').fadeIn();
+                    audio.play(); // Reproducir música cuando aparece el mensaje
+                }, 15000);
+            });
+
+            $('#card').click(function() {
+                $(this).fadeOut();
+                audio.pause(); // Detener música cuando se cierra el mensaje
+                audio.currentTime = 0; // Reiniciar la música al principio
+            });
+        });
+    </script>
+</body>
+</html>
